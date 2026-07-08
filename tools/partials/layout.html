@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{page_url}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{site_name}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{page_url}}">
+  <meta property="og:image" content="{{site_url}}{{og_image}}">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="theme-color" content="#141B24">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/prata-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script>document.documentElement.classList.add('js-anim')</script>
+</head>
+<body class="{{body_class}}">
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  {{> header}}
+  <main id="main">
+{{content}}
+  </main>
+  {{> footer}}
+  {{> booking-modal}}
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

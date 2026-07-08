@@ -1,0 +1,71 @@
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Diamond Hotel Shymkent — на главную">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <path d="M17 3 L29 13.4 L17 31 L5 13.4 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M5 13.4 H29 M17 3 L11.4 13.4 L17 31 L22.6 13.4 Z" stroke="currentColor" stroke-width="1" stroke-linejoin="round" opacity=".55"/>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">Diamond</span>
+        <span class="brand-sub">Hotel · Shymkent</span>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="/"{{active_home}}>Главная</a></li>
+        <li><a href="/rooms.html"{{active_rooms}}>Номера</a></li>
+        <li><a href="/restaurant.html"{{active_restaurant}}>Ресторан</a></li>
+        <li><a href="/events.html"{{active_events}}>Мероприятия</a></li>
+        <li><a href="/about.html"{{active_about}}>Об отеле</a></li>
+        <li><a href="/gallery.html"{{active_gallery}}>Галерея</a></li>
+        <li><a href="/reviews.html"{{active_reviews}}>Отзывы</a></li>
+        <li><a href="/contacts.html"{{active_contacts}}>Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="header-phone" href="{{phone_href}}">{{phone_pretty}}</a>
+      <button class="btn btn-primary btn-book" type="button" data-open-booking>Забронировать</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Открыть меню">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" hidden>
+    <nav class="mobile-nav" aria-label="Мобильная навигация">
+      <ul>
+        <li><a href="/"{{active_home}}>Главная</a></li>
+        <li><a href="/rooms.html"{{active_rooms}}>Номера</a></li>
+        <li><a href="/restaurant.html"{{active_restaurant}}>Ресторан</a></li>
+        <li><a href="/events.html"{{active_events}}>Мероприятия</a></li>
+        <li><a href="/about.html"{{active_about}}>Об отеле</a></li>
+        <li><a href="/gallery.html"{{active_gallery}}>Галерея</a></li>
+        <li><a href="/reviews.html"{{active_reviews}}>Отзывы</a></li>
+        <li><a href="/contacts.html"{{active_contacts}}>Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-footer">
+      <button class="btn btn-primary btn-wide" type="button" data-open-booking>Забронировать номер</button>
+      <div class="mobile-menu-contacts">
+        <a href="{{phone_href}}" aria-label="Позвонить: {{phone_pretty}}">
+          <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#phone"/></svg>
+        </a>
+        <a href="{{whatsapp_href}}" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+          <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#whatsapp"/></svg>
+        </a>
+        <a href="{{telegram_href}}" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+          <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#telegram"/></svg>
+        </a>
+        <a href="{{instagram_href}}" target="_blank" rel="noopener" aria-label="Instagram отеля">
+          <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#instagram"/></svg>
+        </a>
+      </div>
+      <p class="mobile-menu-address">{{address}}</p>
+  </div>
+</div>
+<div class="mobile-cta" data-mobile-cta>
+  <button class="btn btn-primary" type="button" data-open-booking>Забронировать номер</button>
+  <a class="mobile-cta-phone" href="{{phone_href}}" aria-label="Позвонить: {{phone_pretty}}">
+    <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#phone"/></svg>
+  </a>
+</div>

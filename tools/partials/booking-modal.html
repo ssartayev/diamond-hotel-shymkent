@@ -1,0 +1,41 @@
+<dialog class="booking-dialog" id="booking-dialog" aria-labelledby="booking-title">
+  <div class="booking-inner">
+    <div class="booking-head">
+      <div>
+        <p class="eyebrow">Бронирование</p>
+        <h2 class="booking-title" id="booking-title">Выберите удобный способ</h2>
+      </div>
+      <button class="booking-close" type="button" data-close-booking aria-label="Закрыть окно бронирования">
+        <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#close"/></svg>
+      </button>
+    </div>
+    <div class="booking-options">
+      <a class="booking-option booking-option--primary" href="{{gis_href}}" target="_blank" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#map-pin"/></svg>
+        <span class="booking-option-text">
+          <strong>Забронировать в 2ГИС</strong>
+          <span>Актуальные цены, даты и наличие номеров</span>
+        </span>
+        <span class="booking-badge">
+          <svg class="icon icon-star" aria-hidden="true"><use href="/assets/icons.svg#star"/></svg>
+          {{rating}}
+        </span>
+      </a>
+      <a class="booking-option" href="{{whatsapp_href}}" target="_blank" rel="noopener">
+        <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#whatsapp"/></svg>
+        <span class="booking-option-text">
+          <strong>Написать в WhatsApp</strong>
+          <span>Подберём номер и ответим на вопросы</span>
+        </span>
+      </a>
+      <a class="booking-option" href="{{phone_href}}">
+        <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#phone"/></svg>
+        <span class="booking-option-text">
+          <strong>{{phone_pretty}}</strong>
+          <span>Стойка регистрации — круглосуточно</span>
+        </span>
+      </a>
+    </div>
+    <p class="booking-note">Заезд с 14:00 · выезд до 12:00 · завтрак включён в стоимость</p>
+  </div>
+</dialog>

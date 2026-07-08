@@ -1,0 +1,122 @@
+<!--meta
+title = Контакты — Diamond Hotel Shymkent
+description = Diamond Hotel Shymkent: тупик Мирас, 424, Каратауский район. Телефон +7 700 505 75 75, WhatsApp, Telegram. Стойка регистрации — круглосуточно.
+active = contacts
+out = contacts.html
+-->
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Контакты</p>
+        <h1 class="display">Мы всегда на связи</h1>
+        <p class="lede">Стойка регистрации работает круглосуточно — звоните или пишите в любой момент, ответим быстро.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-4" data-reveal-group>
+          <a class="contact-card reveal" href="{{phone_href}}">
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#phone"/></svg>
+            <div><strong>{{phone_pretty}}</strong><span>Звонок на ресепшен · 24/7</span></div>
+          </a>
+          <a class="contact-card reveal" href="{{whatsapp_href}}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#whatsapp"/></svg>
+            <div><strong>WhatsApp</strong><span>Бронирование и вопросы</span></div>
+          </a>
+          <a class="contact-card reveal" href="{{telegram_href}}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#telegram"/></svg>
+            <div><strong>Telegram</strong><span>Напишите нам</span></div>
+          </a>
+          <a class="contact-card reveal" href="{{instagram_href}}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#instagram"/></svg>
+            <div><strong>Instagram</strong><span>@diamond_hotel_shymkent</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark location" style="padding-block:calc(var(--section-y) * .8)">
+      <div class="container location-grid">
+        <div class="reveal">
+          <p class="eyebrow">Адрес</p>
+          <h2>Как добраться</h2>
+          <address>{{address}}</address>
+          <ul class="location-list">
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#plane"/></svg>
+              <span><b>Из аэропорта</b> — около 15 минут на автомобиле. Закажите трансфер заранее — встретим с табличкой.</span>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#map-pin"/></svg>
+              <span><b>Ориентиры</b> — Каратауский район, рядом улица Аргынбекова; 5–7 минут до зоопарка и парка Абая.</span>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#car"/></svg>
+              <span><b>На автомобиле</b> — бесплатная парковка на территории отеля.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="location-cta reveal">
+          <h3 style="margin:0">Точка на карте</h3>
+          <p>Откройте 2ГИС — там точный адрес, фото, маршрут и онлайн-бронирование.</p>
+          <a class="btn btn-light btn-wide" href="{{gis_href}}" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#map-pin"/></svg>
+            Открыть в 2ГИС
+          </a>
+          <a class="btn btn-outline-light btn-wide" href="{{whatsapp_href}}" target="_blank" rel="noopener">Заказать трансфер</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width:760px">
+        <div class="section-head reveal">
+          <p class="eyebrow">Вопросы и ответы</p>
+          <h2>Частые вопросы</h2>
+        </div>
+        <div class="reveal">
+          <details class="faq">
+            <summary>Во сколько заезд и выезд?
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chevron-down"/></svg>
+            </summary>
+            <div class="faq-body">Заезд — с 14:00, выезд — до 12:00. Ранний заезд или поздний выезд возможны по наличию номеров — позвоните нам накануне.</div>
+          </details>
+          <details class="faq">
+            <summary>Завтрак входит в стоимость?
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chevron-down"/></svg>
+            </summary>
+            <div class="faq-body">Да, завтрак «шведский стол» включён для всех гостей и подаётся ежедневно с 07:00 до 10:30 в ресторане отеля.</div>
+          </details>
+          <details class="faq">
+            <summary>Есть ли парковка?
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chevron-down"/></svg>
+            </summary>
+            <div class="faq-body">Да, бесплатная парковка для гостей — на территории отеля.</div>
+          </details>
+          <details class="faq">
+            <summary>Как оплатить проживание?
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chevron-down"/></svg>
+            </summary>
+            <div class="faq-body">Принимаем карты Visa, Mastercard и Maestro, а также наличные (тенге). Онлайн-бронирование доступно через 2ГИС.</div>
+          </details>
+          <details class="faq">
+            <summary>Можно ли заказать трансфер из аэропорта?
+              <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#chevron-down"/></svg>
+            </summary>
+            <div class="faq-body">Да, трансфер организуем по запросу (услуга платная). Напишите в WhatsApp номер рейса — встретим в зале прилёта.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container reveal">
+        <div>
+          <h2>Готовы забронировать?</h2>
+          <p class="lede" style="margin-top:10px">Онлайн в 2ГИС — или напишите, поможем с выбором.</p>
+        </div>
+        <div class="cta-actions">
+          <button class="btn btn-primary" type="button" data-open-booking>Забронировать</button>
+        </div>
+      </div>
+    </section>
