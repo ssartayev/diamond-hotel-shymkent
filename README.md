@@ -8,7 +8,6 @@ the output is plain HTML/CSS/JS that deploys to any static host.
 
 ![Diamond Hotel Shymkent](assets/img/hero/hero-main.webp)
 
-[Русская версия README →](README.ru.md)
 
 ---
 
