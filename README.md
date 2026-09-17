@@ -1,73 +1,84 @@
-# Diamond Hotel Shymkent — официальный сайт
+# Diamond Hotel Shymkent — Official Website
 
-Производственный статический сайт отеля Diamond Hotel Shymkent (4★, Шымкент,
-тупик Мирас 424). Русскоязычный, mobile-first, без внешних зависимостей —
-деплой на любой статический хостинг.
+Production website for Diamond Hotel Shymkent, a real 4★ hotel in Shymkent,
+Kazakhstan (opened 2024, rated 4.8★ from 1300+ reviews on 2GIS).
 
-## Что внутри
+Russian-language, mobile-first, and built with **zero runtime dependencies** —
+the output is plain HTML/CSS/JS that deploys to any static host.
 
-| Страница | Файл |
-|---|---|
-| Главная | `index.html` |
-| Номера и цены | `rooms.html` |
-| Ресторан и бар | `restaurant.html` |
-| Мероприятия и конференц-зал | `events.html` |
-| Об отеле (+ фитнес, услуги) | `about.html` |
-| Галерея (фильтры + лайтбокс) | `gallery.html` |
-| Отзывы (реальные, 2ГИС) | `reviews.html` |
-| Контакты (+ FAQ) | `contacts.html` |
-| 404 | `404.html` |
+![Diamond Hotel Shymkent](assets/img/hero/hero-main.webp)
 
-Бронирование — через 2ГИС (страница отеля с онлайн-бронированием), WhatsApp и
-телефон: модальное окно «Забронировать» на каждой странице. Кастомной booking-
-системы нет намеренно.
+[Русская версия README →](README.ru.md)
 
-## Структура
+---
+
+## What it is
+
+Nine pages — home, rooms, restaurant, events, gallery, about, reviews, contacts,
+and a 404 — covering everything a guest needs before booking.
+
+Booking deliberately routes to 2GIS, WhatsApp and phone rather than a custom
+booking engine. The hotel already takes reservations through those channels, so
+building a booking system would have added failure modes without adding bookings.
+
+## How it is built
+
+The machine this was developed on has **no Node.js**, so instead of reaching for
+a JavaScript framework the site uses a **small static site generator written in
+Python with no third-party packages**:
 
 ```
-├── *.html              # собранные страницы (деплой-артефакты)
-├── assets/
-│   ├── css/main.css    # дизайн-система + все компоненты (см. design-system/MASTER.md)
-│   ├── css/fonts.css   # локальные Prata + Manrope (cyrillic + latin)
-│   ├── js/main.js      # меню, модалка, reveal-анимации, лайтбокс (~6 КБ)
-│   ├── img/            # WebP-фото по разделам (см. IMAGES.md)
-│   └── icons.svg       # SVG-спрайт иконок
-├── tools/
-│   ├── pages/          # ИСХОДНИКИ страниц (контент + meta)
-│   ├── partials/       # layout, header, footer, booking-modal
-│   ├── build.py        # сборщик (python3, без зависимостей)
-│   └── fetch_images.py # перезагрузка фото-заглушек
-├── design-system/MASTER.md  # дизайн-токены и правила
-└── IMAGES.md           # карта замены фото на официальные
+tools/
+  build.py       the generator
+  pages/         per-page content
+  partials/      shared header, footer, meta blocks
 ```
 
-## Как редактировать
+```bash
+python3 tools/build.py    # rebuild all HTML after editing content
+```
 
-1. Правьте контент в `tools/pages/*.html` и партиалы в `tools/partials/`
-   (общие телефоны/адрес/ссылки — в `GLOBALS` внутри `tools/build.py`).
-2. Соберите: `python3 tools/build.py` — перезапишет корневые `*.html`,
-   `sitemap.xml` и `robots.txt`.
-3. CSS/JS/картинки правятся напрямую в `assets/` (сборка не нужна).
+Shared markup lives in one place, so a change to the header updates all nine
+pages instead of nine copies drifting apart.
 
-Локальный просмотр: `python3 -m http.server 8734` в корне проекта.
+## Design system
 
-## Перед продакшн-деплоем
+A documented design system in `design-system/MASTER.md` defines the type scale,
+spacing and palette:
 
-- [ ] Замените фото-заглушки официальными снимками отеля — по таблице `IMAGES.md`
-      (имена файлов сохраняются, правки HTML не нужны).
-- [ ] Укажите реальный домен в `SITE_URL` (`tools/build.py`) и пересоберите —
-      обновятся canonical, OG-теги и sitemap.
-- [ ] Проверьте цены на номера (сейчас: ориентиры «от 25/35/45 тыс. ₸» по данным
-      агрегаторов лета 2026).
-- [ ] Настройте отдачу `404.html` для несуществующих URL (nginx: `error_page 404 /404.html;`
-      Netlify/Vercel подхватят автоматически).
+- **Typography** — Prata for headings, Manrope for body, both with Cyrillic support
+- **Palette** — porcelain, ink and bronze
+- **Images** — WebP throughout, sized for mobile-first delivery
 
-## Факты об отеле, использованные на сайте
+## Engineering notes
 
-Собраны из публичных источников (2ГИС, trip.com, hotels.com, visit-shymkent.com,
-ostrovok.ru) в июле 2026: открыт в 2024, 8 этажей, ~60 номеров, рейтинг 4,8
-(1 300+ оценок в 2ГИС), завтрак включён (07:00–10:30), ресторан и бар, терраса,
-караоке и тематические ужины, конференц-зал (~80 м²), банкеты, фитнес-зал,
-бесплатные Wi-Fi и парковка, платный трансфер, room service, прачечная,
-заезд 14:00 / выезд 12:00, Visa/Mastercard/Maestro. Телефон/WhatsApp/Telegram:
-+7 700 505 75 75. Instagram: @diamond_hotel_shymkent.
+Two problems worth recording:
+
+**`backdrop-filter` breaks `position: fixed` children.** Applying
+`backdrop-filter` to the fixed header made it the containing block for the fixed
+mobile menu, so the menu was trapped inside the header instead of covering the
+screen. Fix: the menu must be a **sibling** of `<header>`, not a child.
+
+**Performance-first images.** All photography is WebP with explicit dimensions to
+avoid layout shift, and the hero ships separate desktop and mobile crops instead
+of downscaling one large file.
+
+## Tech stack
+
+HTML5 · CSS3 (custom properties, grid, flexbox) · vanilla JavaScript ·
+Python 3 static site generator · WebP assets · semantic markup with Open Graph
+and sitemap for SEO
+
+## Project layout
+
+```
+index.html  rooms.html  restaurant.html  events.html
+gallery.html  about.html  reviews.html  contacts.html  404.html
+assets/
+  css/  js/  img/
+design-system/
+  MASTER.md          type scale, palette, spacing rules
+tools/
+  build.py  pages/  partials/
+IMAGES.md            image inventory and replacement map
+```
